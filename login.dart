@@ -1,38 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:login/componentes/botao.dart';
-import 'package:login/componentes/caixa_texto.dart';
+import 'package:flashnow/componentes/botao.dart';
+import 'package:flashnow/componentes/caixadetexto.dart';
+import 'package:flashnow/app.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
-  final appTitle = 'Login Teste';
-  final title = 'Página de Login';
   final _formkey = GlobalKey<FormState>();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appTitle,
+      title: 'Login',
       home: Scaffold(
-        appBar: AppBar(title: Text(title)),
-        body: Form(
-          key: _formkey,
+        appBar: AppBar(
+          title: Text('Login'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(12),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Center(
-                child: Container(
-                  width: 200,
-                  height: 200,
-                  child: Image.asset('assets/logo.png'),
-                ),
-              ),
-              const CaixaTexto.senha(
-                label: 'Digite seu E-mail',
+              Expanded(child: Container()),
+              CaixaTexto.senha(
+                label: "Digite seu E-mail",
                 pass: false,
+                controller: emailController,
               ),
-              const CaixaTexto.senha(
-                label: 'Digite sua senha',
+              CaixaTexto.senha(
+                label: "Digite sua senha",
+                controller: senhaController,
               ),
-              Botao(title: 'Seguir', formkey: _formkey),
+              Botao(title: "Entrar", formKey: _formkey),
+              ElevatedButton(
+                  onPressed: () {}, child: Text('Esqueci minha senha')),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () {}, child: const Text('Cadastre-se')),
+                  ],
+                ),
+              )
             ],
           ),
         ),
