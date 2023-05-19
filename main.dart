@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:login/Login/login.dart';
+import 'package:flashnow/app.dart';
 
 void main() {
-  runApp(Login());
+  runApp(const App());
 }
